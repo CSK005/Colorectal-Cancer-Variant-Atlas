@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somatic Variant Data</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+    <script src="js/crc-db.js"></script>
+</head>
+<body>
+    <br /><br />
+    <div class="container">
+        <h3 text-align="left">Somatic Variant Data</h3>
+        <br />
+        <div class="table-responsive">
+            <table id="data" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <td>SRR ID</td>
+                        <td>Total Variants</td>
+                        <td>SNPs</td>
+                        <td>MNP</td>
+                        <td>INS</td>
+                        <td>DEL</td>
+                        <td>Transitions</td>
+                        <td>Transversions</td>
+                        <td>Missense Variants</td>
+                        <td>Silent Variants</td>
+                        <td>Nonsense Variants</td>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+    (async function () {
+        try {
+            const db = await CRCDB.load();
+            const rows = CRCDB.queryAll(
+                db,
+                "SELECT * FROM Somatic_Variant_Data ORDER BY Sl_No"
+            );
+            CRCDB.renderTable("#data", rows, [
+                { key: "SRR_ID" },
+                { key: "Total_Variants" },
+                { key: "SNPs" },
+                { key: "MNP" },
+                { key: "INS" },
+                { key: "DEL" },
+                { key: "Transitions" },
+                { key: "Transversions" },
+                { key: "Missense_Variants" },
+                { key: "Silent_Variants" },
+                { key: "Nonsense_Variants" },
+            ]);
+        } catch (e) {
+            CRCDB.showError(e.message);
+        }
+    })();
+    </script>
+</body>
+</html>

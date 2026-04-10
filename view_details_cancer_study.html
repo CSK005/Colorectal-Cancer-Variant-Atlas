@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Details - Colon cancer exome dataset</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="js/crc-db.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h3 text-align="left">Colon cancer exome dataset information - Details</h3>
+        <div class="container">
+            <a href="full_cancer_view.html" class="btn btn-primary">Previous Table</a>
+        </div>
+        <br />
+        <div id="details" class="table-responsive"></div>
+    </div>
+
+    <script>
+    (async function () {
+        const id = CRCDB.getQueryParam("study_id");
+        const $out = document.getElementById("details");
+        if (!id) {
+            $out.innerHTML = "<p>No study_id provided.</p>";
+            return;
+        }
+        try {
+            const db = await CRCDB.load();
+            const rows = CRCDB.queryAll(
+                db,
+                "SELECT * FROM Colorectal_Cancer_Clinical_Info WHERE NCB_SRA_ID = ?",
+                [id]
+            );
+            if (!rows.length) {
+                $out.innerHTML =
+                    "<p>No details found for the given NCB_SRA_ID in Clinical Information</p>";
+                return;
+            }
+            const r = rows[0];
+            const fields = [
+                ["NCB SRA ID", r.NCB_SRA_ID],
+                ["SEX", r.SEX],
+                ["AGE", r.AGE],
+                ["BMI", r.BMI],
+                ["CENTER NAME", r.CENTER_NAME],
+                ["COLLECTION PROCEDURE", r.COLLECTION_PROCEDURE],
+                ["DEVELOPMENT STAGE", r.DEVELOPMENTAL_STAGE],
+                ["SCOPE", r.SCOPE],
+                ["TISSUE", r.TISSUE],
+                ["TISSUE1", r.TISSUE1],
+            ];
+            const rowsHtml = fields
+                .map(
+                    ([label, val]) =>
+                        `<tr><td><strong>${label}:</strong></td><td>${CRCDB.escapeHtml(val)}</td></tr>`
+                )
+                .join("");
+            $out.innerHTML =
+                '<table class="table table-striped table-bordered">' +
+                rowsHtml +
+                "</table>";
+        } catch (e) {
+            CRCDB.showError(e.message);
+        }
+    })();
+    </script>
+</body>
+</html>

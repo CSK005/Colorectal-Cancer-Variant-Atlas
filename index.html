@@ -1,0 +1,308 @@
+<html>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- Bootstrap JS and CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        .main {
+            width: 90%;
+            margin: 50px auto;
+            text-align: center;
+        }
+        .logo {
+            width: 200px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .workflow {
+            width: 700px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        h1 {
+            margin-bottom: 10px;
+            font-size: 32px;
+            color: #343a40;
+        }
+        .has-search .form-control {
+            padding-left: 2.375rem;
+        }
+        .has-search .form-control-feedback {
+            position: absolute;
+            z-index: 2;
+            display: block;
+            width: 2.375rem;
+            height: 2.375rem;
+            line-height: 2.375rem;
+            text-align: center;
+            pointer-events: none;
+            color: #aaa;
+        }
+        /* Footer Section */
+        .footer {
+            margin-top: 8px;
+            text-align: left;
+            background-color: #f8f9fa;
+            padding: 8px;
+            border-top: 1px solid #dee2e6;
+        }
+        .footer h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .footer .info-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .footer .info-section img {
+            width: 50px;
+            height: auto;
+            margin-right: 15px;
+        }
+
+         /* Base styles */
+         body {
+            font-family: inherit;
+            margin: 0;
+            padding: 0;
+            color: #343a40;
+        }
+        .summary {
+            max-width: 1000px;
+            margin: 0 left;
+            padding: 20px;
+           
+        }
+        .content-label {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+           text-align: justify;
+        }
+        .content-label b {
+            font-weight: 600;
+            color: #343a40;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+        ul li {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #343a40;
+            text-align: left;
+            padding-bottom: 5px;
+        }
+        
+        /* Modal dialog as needed */
+        .custom-modal-width {
+        max-width: 80%;  /* Adjust as needed */
+        }
+
+        .modal-dialog {
+        max-width: 80%;  /* Width of the modal */
+        }
+
+        .modal-content {
+        height: 80vh; /* Adjust height as needed */
+        display: flex;
+        flex-direction: column;
+        }
+
+        .modal-body {
+        overflow-y: auto; /* Enables vertical scrolling */
+        flex: 1 1 auto; /* Allow the body to take available space */
+        max-height: calc(80vh - 100px); /* Adjust to the desired height */
+        
+    }
+    </style>
+    <body>
+        <div class="main">
+            <!-- Database Logo and Name -->
+          <!--  <img src="img/logo.jpg" alt="MutaXome Logo" class="logo"> <div class="summary">  <h1>Colorectal Cancer Variant Atlas (CRC-VA)</h1> -->
+        
+            <div style="display: flex; align-items: center;">
+                <!-- Database Logo and Name -->
+                <img src="img/logo.jpg" alt="logo" class="logo" style="margin-right: 15px;">
+                <div class="summary">
+                    <h1>Colorectal Cancer Variant Atlas (CRC-VA)</h1>
+                </div>
+            </div>
+            
+        <p class="content-label">
+            The Colorectal Cancer Genomic Variant Database (CC-GVD) is a comprehensive repository of germline and somatic variants identified from colorectal cancer (CRC) exome datasets, along with normal colorectal tissue exome datasets. The database is built from high-throughput sequencing data processed using an automated Next-Generation Sequencing (NGS) pipeline, ensuring accurate variant calling and annotation.
+        </p>
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <!-- .ppt div (you can add content or style it as needed) -->
+            <div class="ppt" style="flex: 1;">
+       
+            <div class="section-title">Dataset Composition:</div>
+            <ul>
+                <li>Exome data from colorectal cancer patients and normal tissue samples.</li>
+                <li>Germline variants identified using the GATK Best Practices pipeline.</li>
+                <li>Somatic mutations detected using Mutect2, a state-of-the-art tool for distinguishing tumor-specific mutations.</li>
+            </ul>
+            
+            <div class="section-title">Pipeline Overview:</div>
+            <ul>
+                <li>Raw sequencing reads are retrieved from NCBI-SRA and undergo preprocessing.</li>
+                <li>Quality control is performed using FastQC & MultiQC.</li>
+                <li>Alignment is conducted using Bowtie2, followed by conversion to BAM format using SAMtools.</li>
+                <li>Variants are called with GATK (HaplotypeCaller for germline) and Mutect2 (for somatic variants).</li>
+                <li>Annotation is performed using SnpEff.</li>
+                <li>Functional impact is assessed using SIFT & PolyPhen2.</li>
+                <li>Variants are prioritized based on frequency and potential pathogenicity.</li>
+                <li>Gene expression analysis integrates data from GEPIA2, OncoMX, and cBioPortal.</li>
+            </ul>
+            
+            <div class="section-title">Applications:</div>
+            <ul>
+                <li>Identification of CRC-specific somatic mutations.</li>
+                <li>Discovery of novel germline risk variants.</li>
+                <li>Comparative analysis between tumor and normal tissue mutations.</li>
+                <li>Support for biomarker discovery and targeted therapy research.</li>
+            </ul>
+        </div>
+            <img src="img/workflow.jpg" alt="logo" class="workflow" style="margin-left: 15px;">
+            
+        </div>
+        <hr style="border: 1px solid black;">
+    </div>
+            <div class="container">
+                <!-- The iframe below will load the full table from the PHP file -->
+                <div class="table-responsive">
+                    <iframe src="full_cancer_view.html" width="100%" height="80%" frameborder="0">
+                        Your browser does not support iframes.
+                    </iframe>
+                </div>
+                <div class="table-responsive">
+                    <iframe src="full_ncb_sra.html" width="100%" height="80%" frameborder="0">
+                        Your browser does not support iframes.
+                    </iframe>
+                </div>
+
+              <!-- Section with buttons to open the popup containing both image and table -->
+              <div class="section-title">Under Distribution:</div>
+              <button onclick="openSomaticPopup()" class="btn btn-info" style="margin: 15px;">Somatic Variants</button>
+              <br>
+              <button onclick="openGermlinePopup()" class="btn btn-info" style="margin: 15px;">Germline Variants</button>
+                <br>    
+                <div>
+                    <a href="https://colon-cancer-ai-ml-model-preliminary.streamlit.app/" class="btn btn-info"  style="margin: 15px;" target="_blank">Open App Link</a>
+
+                </div>
+                
+            </div>
+            
+
+            <!-- Modal to show both table and image -->
+            <div id="somaticImageAndTableModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="imageAndTableModalLabel" aria-hidden="true">
+                 <div class="modal-dialog custom-modal-width" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="imageAndTableModalLabel">Somatic Variants</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Image Section -->
+                            <div class="mb-4">
+                                <img id="somaticModalImage" src="img/somatic-variant-graph.jpg" alt="Image" class="img-fluid">
+                            </div>
+            
+                            <!-- Table Section -->
+                            <div class="table-responsive">
+                                <iframe src="table_somatic_variants.html" width="100%" height="100%" frameborder="0">
+                                    Your browser does not support iframes.
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="germlineImageAndTableModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="imageAndTableModalLabel" aria-hidden="true">
+                <div class="modal-dialog custom-modal-width" role="document">
+                   <div class="modal-content">
+                       <div class="modal-header">
+                           <h5 class="modal-title" id="imageAndTableModalLabel">Germline Variants</h5>
+                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                               <span aria-hidden="true">&times;</span>
+                           </button>
+                       </div>
+                       <div class="modal-body">
+                           <!-- Image Section -->
+                           <div class="mb-4">
+                               <img id="germlineModalImage" src="img/germline-variant-graph.jpg" alt="Image" class="img-fluid">
+                           </div>
+           
+                           <!-- Table Section -->
+                           <div class="table-responsive">
+                               <iframe src="table_germline_variants.html" width="100%" height="100%" frameborder="0">
+                                   Your browser does not support iframes.
+                               </iframe>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+            <script>
+                    // Function to open the modal displaying both image and table
+                    function openSomaticPopup() {
+                    // Set the image source dynamically
+                     var imageUrl = 'img/somatic-variant-graph.jpg'; // Modify the image path here
+                      //  document.getElementById('modalImage').src = imageUrl;
+
+                     // Open the modal
+                    $('#somaticImageAndTableModal').modal('show');
+                    }
+
+                    // Function to open the modal displaying both image and table
+                    function openGermlinePopup() {
+                    // Set the image source dynamically
+                     var imageUrl = 'img/germline-variant-graph.jpg'; // Modify the image path here
+                       // document.getElementById('modalImage').src = imageUrl;
+
+                     // Open the modal
+                    $('#germlineImageAndTableModal').modal('show');
+                    }
+
+            </script>
+        </div>
+
+        <!-- Footer Section: Cite Us and Contact Information -->
+        <div class="footer">
+            <!-- Cite Us Section -->
+            <div class="info-section">
+                <div>
+                    <h4>Team:</h4>
+                    <p>Chandrashekar K, Anagha S Setlur, Dr. Vidya Niranjan, Abhijit Gautam, Kokila Ishwar <br> </p>
+                </div>
+            </div>
+
+            <!-- Contact Info Section -->
+            <div class="info-section">
+                <img src="img/contact-info-logo.png" alt="Contact Info Logo">
+                <div>
+                    <h4>Contact Information:</h4>
+                    <p>Dr. Vidya Niranjan, Professor, Department of Biotechnology, RV College of Engineering, Bangalore, Karnataka, India.<br>
+                    Email: <a href="mailto:vidya.n@rvce.edu.in">vidya.n@rvce.edu.in</a></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

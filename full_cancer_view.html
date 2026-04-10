@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colon cancer and Normal colon exome dataset information</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+    <script src="js/crc-db.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h3 text-align="left">Colon cancer and Normal colon exome dataset information</h3>
+        <br />
+        <div class="table-responsive">
+            <table id="data" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <td>NCB SRA ID</td>
+                        <td>Cancer Name</td>
+                        <td>Design</td>
+                        <td>Instrument</td>
+                        <td>Strategy</td>
+                        <td>Source</td>
+                        <td>Selection</td>
+                        <td>Layout</td>
+                        <td>Isolate</td>
+                        <td>BioProject</td>
+                        <td>BioSample</td>
+                        <td>Clinical Info</td>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+    (async function () {
+        try {
+            const db = await CRCDB.load();
+            const rows = CRCDB.queryAll(
+                db,
+                "SELECT * FROM Colorectal_Cancer_Exome_Dataset ORDER BY Sl_No"
+            );
+            CRCDB.renderTable("#data", rows, [
+                { key: "NCB_SRA_ID" },
+                { key: "Cancer_Name" },
+                { key: "Design" },
+                { key: "Instrument" },
+                { key: "Strategy" },
+                { key: "Source" },
+                { key: "Selection" },
+                { key: "Layout" },
+                { key: "Isolate" },
+                { key: "BioProject" },
+                { key: "BioSample" },
+                {
+                    key: "NCB_SRA_ID",
+                    render: (r) =>
+                        '<a href="view_details_cancer_study.html?study_id=' +
+                        encodeURIComponent(r.NCB_SRA_ID) +
+                        '" class="btn btn-info">Clinical Info</a>',
+                },
+            ]);
+        } catch (e) {
+            CRCDB.showError(e.message);
+        }
+    })();
+    </script>
+</body>
+</html>
